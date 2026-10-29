@@ -278,6 +278,7 @@ aside button:hover{transform:translateX(3px)}
 @media(max-width:900px){.sc-top{grid-template-columns:1fr 1fr}.sc-formgrid{grid-template-columns:1fr}.sc-months{grid-template-columns:repeat(3,minmax(0,1fr))}.sc-table{min-width:760px}}
 
 
+body.role-viewer aside button:not([data-v=dash]),body.role-viewer #dashScOpen,body.role-viewer #dcard [data-edit],body.role-viewer #dcard [data-open-scurve]{display:none!important}
 /* Login Easton v2 — animasi */
 #loginScreen{position:fixed;inset:0;z-index:99999;display:flex;padding:clamp(12px,3vw,32px);overflow:auto;color:#edf7f1;background:linear-gradient(135deg,#1b4336,#2b5b4a 55%,#1a4033)}
 .login-bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
@@ -402,24 +403,6 @@ body.enter #cards>*{animation:enRise .7s cubic-bezier(.2,.8,.2,1) backwards;anim
 
  <!-- DASHBOARD -->
  <section class="view on" id="dash">
-  <div class="banner">
-   <h2 id="hi">Selamat datang</h2>
-   <p>Ringkasan progres pembangunan <b id="bProj"></b> · <span id="bLoc"></span><span id="today"></span></p>
-   <div class="glass">
-    <div data-k=""><span>Total Unit</span><b id="b1">0</b></div>
-    <div data-k=""><span>Progres Rata-rata</span><b id="b2" data-suf="%">0%</b></div>
-    <div data-k="done"><span>Unit Selesai</span><b id="b3">0</b></div>
-    <div data-k="late"><span>Unit Terlambat</span><b id="b4">0</b></div>
-   </div>
-  </div>
-  <div class="grid4" id="cards"></div>
-  <div class="card dash-scurve-card" id="dashSCurveCard">
-   <div class="dash-sc-head"><div><h3>📈 Kurva S Progres Unit</h3><div class="sub">Pilih unit atau klik titik pada peta untuk melihat rencana dan aktual berbobot selama 12 bulan.</div></div><label class="dash-sc-select">Unit<select id="dashScUnit" aria-label="Pilih unit untuk Kurva S dashboard"></select></label></div>
-   <div class="dash-sc-kpis"><div><span>Aktual berbobot</span><b id="dashScActual">0%</b></div><div><span>Rencana terakhir</span><b id="dashScPlan">0%</b></div><div><span>Selisih</span><b id="dashScVariance">—</b></div><div><span>Bobot pekerjaan</span><b id="dashScWeight">100%</b></div></div>
-   <div class="dash-sc-chart" id="dashScChart"><div class="sub">Memuat Kurva S…</div></div>
-   <div class="sc-legend"><span><i style="background:#059669"></i>Rencana kumulatif</span><span><i style="background:#2563eb"></i>Aktual kumulatif</span></div>
-   <div class="dash-sc-foot"><span id="dashScStatus">Pilih unit untuk melihat Kurva S.</span><button class="btn ghost" id="dashScOpen">Buka pengaturan Kurva S ↗</button></div>
-  </div>
   <div class="card mapcard" id="vbox">
    <div class="mhead">
     <div style="flex:1;min-width:220px">
@@ -459,6 +442,24 @@ body.enter #cards>*{animation:enRise .7s cubic-bezier(.2,.8,.2,1) backwards;anim
     <div class="dcard" id="dcard" aria-live="polite"></div>
    </div>
   </div>
+  <div class="card dash-scurve-card" id="dashSCurveCard">
+   <div class="dash-sc-head"><div><h3>📈 Kurva S Progres Unit</h3><div class="sub">Pilih unit atau klik titik pada peta untuk melihat rencana dan aktual berbobot selama 12 bulan.</div></div><label class="dash-sc-select">Unit<select id="dashScUnit" aria-label="Pilih unit untuk Kurva S dashboard"></select></label></div>
+   <div class="dash-sc-kpis"><div><span>Aktual berbobot</span><b id="dashScActual">0%</b></div><div><span>Rencana terakhir</span><b id="dashScPlan">0%</b></div><div><span>Selisih</span><b id="dashScVariance">—</b></div><div><span>Bobot pekerjaan</span><b id="dashScWeight">100%</b></div></div>
+   <div class="dash-sc-chart" id="dashScChart"><div class="sub">Memuat Kurva S…</div></div>
+   <div class="sc-legend"><span><i style="background:#059669"></i>Rencana kumulatif</span><span><i style="background:#2563eb"></i>Aktual kumulatif</span></div>
+   <div class="dash-sc-foot"><span id="dashScStatus">Pilih unit untuk melihat Kurva S.</span><button class="btn ghost" id="dashScOpen">Buka pengaturan Kurva S ↗</button></div>
+  </div>
+  <div class="banner">
+   <h2 id="hi">Selamat datang</h2>
+   <p>Ringkasan progres pembangunan <b id="bProj"></b> · <span id="bLoc"></span><span id="today"></span></p>
+   <div class="glass">
+    <div data-k=""><span>Total Unit</span><b id="b1">0</b></div>
+    <div data-k=""><span>Progres Rata-rata</span><b id="b2" data-suf="%">0%</b></div>
+    <div data-k="done"><span>Unit Selesai</span><b id="b3">0</b></div>
+    <div data-k="late"><span>Unit Terlambat</span><b id="b4">0</b></div>
+   </div>
+  </div>
+  <div class="grid4" id="cards"></div>
   <div class="grid2">
    <div class="card"><h3>Progres per Blok</h3><div class="sub">Rata-rata progres tiap blok</div><div id="blocks"></div></div>
    <div class="card"><h3>Serah Terima Terdekat</h3><div class="sub">Unit yang belum selesai, urut tanggal</div><div id="near"></div></div>
@@ -1492,6 +1493,7 @@ $('#resetDataBtn').onclick=async()=>{
 // ---------- Navigasi ----------
 const titles={dash:['Dashboard','Pantau progres semua unit & lihat info di site plan'],plan:['Site Plan','Kelola unit, tipe unit, dan titik pada peta'],tbl:['Tabel Unit','Daftar ringkas seluruh unit QC (hanya lihat)'],scurve:['Kurva S','Pantau rencana dan aktual berbobot selama 12 bulan'],set:['Pengaturan','Konfigurasi aplikasi dan data']};
 function go(v){
+  if(authUser&&authUser.role==='Viewer'&&v!=='dash')v='dash'; // Viewer: hanya dashboard
   document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on',s.id===v));
   document.querySelectorAll('aside button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   $('#ttl').textContent=titles[v][0];$('#sub').textContent=titles[v][1];
