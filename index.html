@@ -403,6 +403,17 @@ body.enter #cards>*{animation:enRise .7s cubic-bezier(.2,.8,.2,1) backwards;anim
 
  <!-- DASHBOARD -->
  <section class="view on" id="dash">
+  <div class="banner">
+   <h2 id="hi">Selamat datang</h2>
+   <p>Ringkasan progres pembangunan <b id="bProj"></b> · <span id="bLoc"></span><span id="today"></span></p>
+   <div class="glass">
+    <div data-k=""><span>Total Unit</span><b id="b1">0</b></div>
+    <div data-k=""><span>Progres Rata-rata</span><b id="b2" data-suf="%">0%</b></div>
+    <div data-k="done"><span>Unit Selesai</span><b id="b3">0</b></div>
+    <div data-k="late"><span>Unit Terlambat</span><b id="b4">0</b></div>
+   </div>
+  </div>
+  <div class="grid4" id="cards"></div>
   <div class="card mapcard" id="vbox">
    <div class="mhead">
     <div style="flex:1;min-width:220px">
@@ -449,17 +460,6 @@ body.enter #cards>*{animation:enRise .7s cubic-bezier(.2,.8,.2,1) backwards;anim
    <div class="sc-legend"><span><i style="background:#059669"></i>Rencana kumulatif</span><span><i style="background:#2563eb"></i>Aktual kumulatif</span></div>
    <div class="dash-sc-foot"><span id="dashScStatus">Pilih unit untuk melihat Kurva S.</span><button class="btn ghost" id="dashScOpen">Buka pengaturan Kurva S ↗</button></div>
   </div>
-  <div class="banner">
-   <h2 id="hi">Selamat datang</h2>
-   <p>Ringkasan progres pembangunan <b id="bProj"></b> · <span id="bLoc"></span><span id="today"></span></p>
-   <div class="glass">
-    <div data-k=""><span>Total Unit</span><b id="b1">0</b></div>
-    <div data-k=""><span>Progres Rata-rata</span><b id="b2" data-suf="%">0%</b></div>
-    <div data-k="done"><span>Unit Selesai</span><b id="b3">0</b></div>
-    <div data-k="late"><span>Unit Terlambat</span><b id="b4">0</b></div>
-   </div>
-  </div>
-  <div class="grid4" id="cards"></div>
   <div class="grid2">
    <div class="card"><h3>Progres per Blok</h3><div class="sub">Rata-rata progres tiap blok</div><div id="blocks"></div></div>
    <div class="card"><h3>Serah Terima Terdekat</h3><div class="sub">Unit yang belum selesai, urut tanggal</div><div id="near"></div></div>
